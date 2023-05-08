@@ -5,7 +5,7 @@ async function createProjectDist(pathFolder, folderName){
     try {
         const createDir = await fs.mkdir(path.join(pathFolder, folderName), { recursive: true });
         createFile(folderName ,'index.html');
-        createFile(folderName ,'styles.css');
+        createFile(folderName ,'style.css');
         copyFolders(path.join(__dirname, "assets"), path.join(__dirname, "project-dist", "assets"));
         mergeStyles();
         mergeHtml();
@@ -15,8 +15,6 @@ async function createProjectDist(pathFolder, folderName){
 }
 
 createProjectDist(__dirname, 'project-dist');
-
-
 
 function createFile(folderName, fileName) {
     fs.writeFile(path.join(__dirname, folderName, fileName), '', (err) => {
@@ -83,7 +81,7 @@ function readStyle(fileName) {
 }
 
 function addStyle(data){
-    fs.appendFile(path.join(__dirname,  'project-dist', 'styles.css'), data, (err) => {
+    fs.appendFile(path.join(__dirname,  'project-dist', 'style.css'), data, (err) => {
         if(err) throw err;
     });
 }
