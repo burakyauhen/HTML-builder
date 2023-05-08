@@ -1,8 +1,6 @@
 const fs = require('node:fs/promises');
-// const path = require('path').join(__dirname, 'secret-folder');
 const path = require('path');
 const pathFolder = path.join(__dirname, 'secret-folder');
-
 
 async function returnFiles(){
     try {
@@ -16,7 +14,6 @@ async function returnFiles(){
                 console.log(`${name} - ${ext.slice(1)} - ${size}kb`);              
             }
         } 
-
     } catch (err) {
         console.error(err);
     }
