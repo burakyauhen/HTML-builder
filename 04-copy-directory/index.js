@@ -14,6 +14,8 @@ async function createFolder(){
 }
 
 createFolder();
+deleteFiles();
+
 
 async function copyF(fileName) {
     try {
@@ -32,6 +34,19 @@ async function returnFiles(){
                 copyF(file.name);      
             }
         } 
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function deleteFiles(){
+    try {
+        const files = await fs.readdir(path.join(pathFolder, 'files-copy'), {withFileTypes: true});
+        for (const file of files) {
+            fs.unlink(path.join(__dirname, 'files-copy', file.name), (err) => {
+                if(err) console.log(err);
+            }); 
+        }
     } catch (err) {
         console.error(err);
     }
